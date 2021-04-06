@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<script src="assets/js/jquery-1.12.4.min.js" type="text/javascript"></script>
 	<link href="assets/css/main.css" rel="stylesheet">
@@ -9,16 +10,20 @@
 	<meta content="width=device-width, initial-scale=1" name="viewport">
 	<script src="assets/js/mobile-detect.js" type="text/javascript"></script>
 	<script>
-        var link_devices = document.URL;
-	
-        if ($.browser.mobile) {
-			
-		} else {
-			var res = link_devices.split("mobile/");
-            window.location.href = res;
-        }
-    </script>
+		$(document).ready(function () {
+			let link_devices = document.URL;
+			let resss = link_devices.slice(0, -8);
+			if ($.browser.mobile) {
+				return false;
+			} else {
+				// 
+				window.location.href = resss;
+			}
+		});
+
+	</script>
 </head>
+
 <body>
 	<main>
 		<section class="s7">
@@ -33,9 +38,9 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="form" data-xd="q33">
-					<form action="includes/submit.php" class="pricerow form" method="post">
+					<form action="../includes/submit.php" class="pricerow form" method="post">
 						<select id="country_code_selector" name="country_code">
 							<option value="VN">Việt Nam</option>
 						</select>
@@ -48,22 +53,5 @@
 		</section>
 	</main>
 </body>
+
 </html>
-<script>
-    $("document").ready(function () {
-        $("#order_submit").submit(function (e) {
-            let order_name = $("input[name=order_name]").val();
-            let order_phone = $("input[name=order_phone]").val();
-            $.ajax({
-                url: "includes/submit.php",
-                type: "post",
-                dataType: "text",
-                data: {
-                    order_name: order_name,
-                    order_phone: order_phone
-                },
-                
-            });
-        });
-    });
-</script>

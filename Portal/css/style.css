@@ -1,0 +1,83 @@
+body{
+	background: fff;
+	font-family: Arial;
+	color: #000;
+}
+.mediabox{
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+	max-width: 400px;
+	background: #fff;
+}
+.option_tile{
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+.option_flag{
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+}
+.option_flag .vietnamese{
+	float:left;
+}
+.option_flag .vietnamese, .option_flag .english{
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	cursor: pointer;
+}
+.option_flag .vietnamese img, .option_flag .english img{
+	max-width: 180px;
+}
+.option_flag .vietnamese img:hover, .option_flag .english img:hover{
+	opacity: 0.8;
+}
+.option_flag .vietnamese span, .option_flag .english span{
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1.3;
+	padding: 10px 0px;
+	cursor: pointer;
+}
+.option_flag .vietnamese:hover, .option_flag .english:hover{
+	color: #00bfff;
+}
+.thankyou{
+	font-size: 22px;
+	text-align: center;
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+@media screen and (max-width: 480px){
+	.option_tile{
+		margin-top: 70px;
+		font-size: 23px;
+	}
+	.option_flag .vietnamese img, .option_flag .english img{
+		max-width: 155px;
+	}
+	.option_flag .vietnamese span, .option_flag .english span{
+		display: block;
+		margin-top: 5px;
+	}
+	.thankyou{
+		font-size: 20px;
+	}
+}
+@media screen and (max-width: 320px){
+	.option_tile{
+		font-size: 20px;
+	}
+	.option_flag .vietnamese img, .option_flag .english img{
+		max-width: 140px;
+	}
+	.thankyou{
+		font-size: 18px;
+		line-height: 1.3;
+	}
+}

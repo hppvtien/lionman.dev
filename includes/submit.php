@@ -1,5 +1,6 @@
 <?php  
-print_r('sadasdas');die;
+include_once('config.php');
+include_once('functions.php');
 $_secure_content = true;
 
 /* Param render footer js */
@@ -11,6 +12,7 @@ parse_str($_SERVER['QUERY_STRING'], $_url_params);
 /* Set cookie name for client browser */
 $ukey = isset($_GET['ukey']) ? trim($_GET['ukey']) : '';
 $cookie_name = str_replace('.', '_', _LANDING_URL) . $ukey;
+
 if ($_POST) {
     if (
         isset($_POST['order_name']) && $_POST['order_name'] != '' &&
@@ -27,7 +29,7 @@ if ($_POST) {
         $data['order_name'] = $_POST['order_name'];
         $data['order_phone'] = $_POST['order_phone'];
         $request = json_decode(request_post_api(_SAVE_ORDER_URL, $data), true);
-        $directUrl = 'error.php';
+        $directUrl = '../error.php';
         if ($request['success']) {
             $_success_string = implode('|', $request['order']);
             $_url_params[base64_encode('success')] = base64_encode($_success_string);
