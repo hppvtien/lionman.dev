@@ -1,7 +1,7 @@
 
 <?php 
     define('_KEY','42266789');
-    define('_LANDING_URL','http://localhost/lionman.top/');
+    define('_LANDING_URL','http://localhost/lionman.dev/');
 
     // Livesite API config
     // define('_SAVE_ORDER_URL','http://api.footec.work/api/?action=save_order');

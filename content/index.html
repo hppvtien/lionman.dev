@@ -13,15 +13,101 @@
     <script>
         $("document").ready(function () {
             var link_devices = document.URL;
-    
             if ($.browser.mobile) {
                 window.location.href = "mobile";
             } else {
     
             }
-      
+            var getUrlParameter = function getUrlParameter(sParam) {
+                var sPageURL = window.location.search.substring(1),
+                    sURLVariables = sPageURL.split('&'),
+                    sParameterName,
+                    i;
+
+                for (i = 0; i < sURLVariables.length; i++) {
+                    sParameterName = sURLVariables[i].split('=');
+
+                    if (sParameterName[0] === sParam) {
+                        return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                    }
+                }
+                return false;
+            };
+            let ukey = getUrlParameter('ukey');
+            var checkTime = localStorage.getItem(link_devices);
+            var check = 122;
+            console.log(int(checkTime)+15);return false;
+            localStorage.setItem('timelife', checkTime + 0.015);
+            var timelife = localStorage.getItem('timelife');
+            if (checkTime == null) {
+              localStorage.setItem(link_devices,Date.now());
+                console.log('null:'+checkTime);
+                // console.log('tim1',checkTime);
+                $.ajax({
+                    url: "includes/count_page.php",
+                    type: "post",
+                    data: {
+                        ukey: ukey,
+                    },
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+            } else {
+                // console.log('checkTime',+checkTime);
+          
+                console.log('not-null:',+checkTime);
+                localStorage.setItem('currentTime', Date.now());
+                var currentTime = localStorage.getItem('currentTime');
+                if(timelife <= currentTime/1000){
+                   
+                    console.log('checkTime:'+checkTime);
+                    console.log('timeLife:'+timelife);
+                    
+                    console.log('currentTime:'+currentTime/1000);
+                    $.ajax({
+                    url: "includes/count_page.php",
+                    type: "post",
+                    data: {
+                        ukey: ukey,
+                    },
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+                } else {
+                    console.log('timeLife:'+timelife);
+                    console.log('currentTime:'+currentTime/1000);
+                }
+            }
+
+            //    if(checkTime == null){
+            //     console.log(checkTime);
+            //    }
+            // if (checkTime == null) {
+            //     console.log('null');
+            //     // localStorage.setItem(link_devices, Date.now());
+            //     let checkTime = 'ádasdasd';
+            //     // var checkTime = Date.now();
+            //     console.log(checkTime);
+
+
+            // } else {
+            //     console.log('not-null');
+            //     localStorage.setItem(link_devices, Date.now());
+            //     let checkTime = localStorage.getItem(link_devices);
+            //     localStorage.setItem('timeLife', checkTime + 15);
+            //     let timeLife = localStorage.getItem('timeLife');
+
+            //     // var checkTime = Date.now();
+            //     // console.log(checkTime);
+            //     // localStorage.setItem(link_devices, Date.now());
+            //     // var checkTime = localStorage.geetItem(link_devices);
+
+            //     console.log(checkTime);
+            //     console.log(checkTime);
+            // }
         });
-    
     </script>
 </head>
 
@@ -34,16 +120,16 @@
                 <img alt class="prod" src="content/assets/img/prod.png" />
                 <div class="form" data-xd="q33">
                     <form action="includes/submit.php" class="pricerow form" method="post">
-                    <!-- <form method="POST" action="submit.php" class="pricerow form"> -->
-                    <h3>Đặt mua với giảm giá</h3>
-                    <select id="country_code_selector" name="country_code">
-                        <option value="VN">Việt Nam</option>
-                    </select>
-                    <input name="order_name" placeholder="Họ tên" type="text" />
-                    <input class="only_number" name="order_phone" placeholder="Số điện thoại" type="text" />
-                    <button class="btn js_submit" id="order_submit" type="submit">Mua ngay!</button>
-                    <!-- </form> -->
-                </form>
+                        <!-- <form method="POST" action="submit.php" class="pricerow form"> -->
+                        <h3>Đặt mua với giảm giá</h3>
+                        <select id="country_code_selector" name="country_code">
+                            <option value="VN">Việt Nam</option>
+                        </select>
+                        <input name="order_name" placeholder="Họ tên" type="text" />
+                        <input class="only_number" name="order_phone" placeholder="Số điện thoại" type="text" />
+                        <button class="btn js_submit" id="order_submit" type="submit">Mua ngay!</button>
+                        <!-- </form> -->
+                    </form>
                 </div>
             </div>
         </section>
